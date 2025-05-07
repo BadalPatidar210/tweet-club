@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+    Code aur tweet
+{% endblock  %}
+
+{% block content %}
+<h3 class="text-center mt-4">Welcome to Code Club Django Project</h3>
+<h4>
+    {%if from.instance.pk %}
+    Edit Tweet
+    {%else %}
+    Create Tweet
+    {% endif %}
+</h4>
+
+<form method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-warning" type="submit">Submit</button>
+</form>
+
+<a href="{% url 'tweet_list' %}"> Back to tweet list</a>
+{% endblock %}
